@@ -1,5 +1,7 @@
+import Navigation from './routes/Navigation';
+
 const App = () => {
-    return <h1>Hoal</h1>;
+    return <Navigation />;
 };
 
 export default App;
