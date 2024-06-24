@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    font-family: 'Mystery Quest', system-ui;
+    font-style: normal;
+}
+
+.custom-drop-shadow {
+    filter: drop-shadow(5px 6px 19px #000000);
+}
