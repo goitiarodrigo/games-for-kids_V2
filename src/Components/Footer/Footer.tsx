@@ -7,9 +7,13 @@ const Footer = () => {
             </div> */}
             <nav className="flex justify-between w-[40%] no-underline text-white text-[1.2rem]">
                 <Link to="/">Home</Link>
-                <Link to="/juegos">Juegos</Link>
-                <Link to="/signup">Registrarse</Link>
-                <Link to="/signin">Iniciar sesión</Link>
+                <Link to="/games">Juegos</Link>
+                {!localStorage.getItem('token') ? (
+                    <>
+                        <Link to="/login">Registrarse</Link>
+                        <Link to="/login">Iniciar sesión</Link>
+                    </>
+                ) : null}
             </nav>
             {/* <p>Todos los derechos reservados Rodrigo Goitia 2024</p> */}
         </div>

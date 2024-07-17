@@ -1,13 +1,9 @@
-import { Outlet } from 'react-router';
+import { Outlet, Navigate } from 'react-router';
 
 import Layout from '@/Components/Layout/Layout';
 
 const PublicRoutes = () => {
-    return (
-        <Layout>
-            <Outlet />
-        </Layout>
-    );
+    return <Layout>{localStorage.getItem('token') ? <Outlet /> : <Navigate to="/login" />}</Layout>;
 };
 
 export default PublicRoutes;

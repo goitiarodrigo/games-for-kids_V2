@@ -12,7 +12,8 @@ interface IRoutes {
 
 const LazyHome = lazy(() => import(/*webpackChunkName: "LazyHome*/ '../Pages/Home'));
 const LazyLog = lazy(() => import(/*webpackChunkName: "LazyLog*/ '../Pages/Log'));
-const LazyHighscore = lazy(() => import(/*webpackChunkName: "LazyLog*/ '../Pages/Highscore'));
+const LazyHighscore = lazy(() => import(/*webpackChunkName: "LazyHighscore*/ '../Pages/Highscore'));
+const LazyGames = lazy(() => import(/*webpackChunkName: "LazyGames*/ '../Pages/Games'));
 
 export const routes: IRoutes[] = [
     {
@@ -34,6 +35,13 @@ export const routes: IRoutes[] = [
         path: '/highscore',
         Component: LazyHighscore,
         name: 'Highscore',
+        private: false,
+    },
+    {
+        to: '/games',
+        path: '/games',
+        Component: LazyGames,
+        name: 'Games',
         private: false,
     },
 ];

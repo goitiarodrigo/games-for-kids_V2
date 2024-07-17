@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { MouseEvent, useState } from 'react';
+import { LoadingButton } from '@mui/lab';
 
 interface IProps {
     handleChange: (type: 'signin' | 'signup') => void;
@@ -10,6 +11,11 @@ interface IProps {
 
 const SignIn = ({ handleChange }: IProps) => {
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    const handleClick = () => {
+        setLoading(true);
+    };
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -19,7 +25,7 @@ const SignIn = ({ handleChange }: IProps) => {
 
     return (
         <>
-            <div className="flex flex-col justify-around ">
+            <div className="flex flex-col justify-around h-3/4">
                 <TextField
                     color="success"
                     label="Usuario"
@@ -47,14 +53,22 @@ const SignIn = ({ handleChange }: IProps) => {
                     />
                 </FormControl>
             </div>
-            <span>Iniciar sesión</span>
-            <span>
+            <LoadingButton
+                className={loading ? '!bg-loading-color' : '!bg-us-primary'}
+                loading={loading}
+                loadingPosition="start"
+                onClick={handleClick}
+                variant="contained">
+                <span>Conectarse</span>
+            </LoadingButton>
+            <span className="!text-us-primary text-end">
                 No tiene cuenta?,{' '}
                 <span
+                    className="!tracking-widest"
                     onClick={() => handleChange('signup')}
                     style={{ fontWeight: 'bold', cursor: 'pointer' }}>
                     {' '}
-                    registrese
+                    REGISTRESE
                 </span>
             </span>
         </>
