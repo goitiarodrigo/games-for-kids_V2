@@ -1,11 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap');
+@font-face {
+    font-family: 'lubalin-graph'; /* Name your font family */
+    src: url('/src/assets/itc-lubalin-graph-std-bold.ttf'); /* Locate the .ttf file within your directory*/
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-    font-family: 'Mystery Quest', system-ui;
+    font-family: 'lubalin-graph';
     font-style: normal;
 }
 

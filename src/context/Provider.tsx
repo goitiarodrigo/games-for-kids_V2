@@ -9,6 +9,8 @@ interface IProps {
 export const Provider = ({ children }: IProps) => {
     const [openModalLog, setOpenModalLog] = useState(false);
     const [typeLog, setTypeLog] = useState<'signin' | 'signup'>('signin');
+    const [isInitializedGame, setIsInitializedGame] = useState(false);
+    const [selectedGame, setSelectedGame] = useState('');
 
     return (
         <Context.Provider
@@ -17,6 +19,10 @@ export const Provider = ({ children }: IProps) => {
                 setOpenModalLog,
                 setTypeLog,
                 typeLog,
+                isInitializedGame,
+                setIsInitializedGame,
+                selectedGame,
+                setSelectedGame,
             }}>
             {children}
         </Context.Provider>

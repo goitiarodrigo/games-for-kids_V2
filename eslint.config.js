@@ -39,6 +39,8 @@ export default [
       ...prettier.rules,
       'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
       'import/order': ['error', {
         groups: ['builtin', 'external', 'internal'],
         'newlines-between': 'always',
