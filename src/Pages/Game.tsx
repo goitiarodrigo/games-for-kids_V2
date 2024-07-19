@@ -28,6 +28,14 @@ const Game = () => {
     return (
         <div>
             <h1>Juego de CrazyGames</h1>
+            {isInitializedGame ? (
+                <iframe
+                    allowFullScreen
+                    height="500px"
+                    src={`https://games.crazygames.com/es_ES/${gameId}/index.html?v=1.293`}
+                    width="1000px"
+                />
+            ) : null}
         </div>
     );
 };
