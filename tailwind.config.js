@@ -9,7 +9,7 @@ export default {
       colors: {
         'us-primary': "rgb(0 114 0)",
         'us-secondary': "#007200c2",
-        'body-bg': "#1565c091",
+        'body-bg': "rgb(126 96 191 / 45%)",
         'border-body-bg': "#1565c0"
       },
     },

@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'lubalin-graph'; /* Name your font family */
-    src: url('/src/assets/itc-lubalin-graph-std-bold.ttf'); /* Locate the .ttf file within your directory*/
+    font-family: 'lubalin-graph';
+    src: url('/src/assets/itc-lubalin-graph-std-bold.ttf');
 }
 
 @tailwind base;
@@ -14,4 +14,21 @@
 
 .custom-drop-shadow {
     filter: drop-shadow(5px 6px 19px #000000);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 7px;
+}
+
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #D9C148;
+    border-radius: 5px;
+}
+
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #7E60BF;
+    border-radius: 5px;
 }

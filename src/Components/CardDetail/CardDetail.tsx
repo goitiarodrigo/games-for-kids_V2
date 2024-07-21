@@ -1,7 +1,6 @@
-import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
-import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 import { useState } from 'react';
-import { CardCover } from '@mui/joy';
+import { CardCover, Card, CardContent, Typography } from '@mui/joy';
+import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 
 import { URL_IMAGES_CG, URL_VIDEOS_CG } from '../../../constants';
 
@@ -26,44 +25,52 @@ const CardDetail = ({ data }: IProps) => {
 
     return (
         <Card
+            className="hover:scale-[105%]"
             onMouseEnter={() => handleMouseEnter(videos.sizes[2])}
             onMouseLeave={handlMouseLeave}
             sx={{
-                maxWidth: 345,
-                minWidth: 345,
-                maxHeight: 320,
-                minHeight: 320,
+                maxWidth: 250,
+                minWidth: 250,
+                maxHeight: 270,
+                minHeight: 270,
                 position: 'relative',
+                backgroundColor: 'transparent',
+                boxShadow: 'none',
+                cursor: 'pointer',
             }}>
-            <CardActionArea>
-                {isMouseEnter ? (
-                    <CardMedia sx={{ height: '200' }}>
-                        <video autoPlay loop muted>
-                            <source
-                                src={`${URL_VIDEOS_CG}${videos.sizes[2]?.location}`}
-                                type="video/mp4"
-                            />
-                        </video>
-                    </CardMedia>
-                ) : (
-                    <CardMedia>
-                        <img
-                            alt="green iguana"
-                            className="h-[140px] w-full"
-                            src={`${URL_IMAGES_CG}${cover}`}
-                            style={{ objectFit: 'cover', height: '200px' }}
+            {isMouseEnter ? (
+                <CardCover>
+                    <video autoPlay loop muted>
+                        <source
+                            src={`${URL_VIDEOS_CG}${videos.sizes[2]?.location}`}
+                            type="video/mp4"
                         />
-                    </CardMedia>
-                )}
-                <CardContent>
-                    <div className="absolute right-5 bottom-[80px] rounded-full bg-black p-3">
-                        <VideogameAssetIcon sx={{ color: 'white', height: 50, width: 50 }} />
-                    </div>
-                    <Typography component="div" gutterBottom variant="h5">
-                        {name}
-                    </Typography>
-                </CardContent>
-            </CardActionArea>
+                    </video>
+                </CardCover>
+            ) : (
+                <CardCover>
+                    <img
+                        alt="Game"
+                        loading="lazy"
+                        src={`${URL_IMAGES_CG}${cover}`}
+                        style={{ objectFit: 'cover' }}
+                    />
+                </CardCover>
+            )}
+            <CardCover
+                sx={{
+                    background:
+                        'linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)',
+                }}
+            />
+            <CardContent sx={{ justifyContent: 'flex-end' }}>
+                <Typography level="title-lg" textColor="#fff">
+                    {name}
+                </Typography>
+                <Typography startDecorator={<VideogameAssetIcon />} textColor="neutral.300">
+                    California, USA
+                </Typography>
+            </CardContent>
         </Card>
     );
 };
