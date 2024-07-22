@@ -6,20 +6,39 @@ import BodyLayout from '@/Components/BodyLayout/BodyLayout';
 import CardDetail from '@/Components/CardDetail/CardDetail';
 import { getUrlForGames, URL_API_CG } from '@/../constants';
 
+const typesOfGames = [
+    {
+        type: 'new',
+        name: 'Nuevos juegos',
+    },
+    {
+        type: 'most-played',
+        name: 'Más jugados',
+    },
+    {
+        type: 'significantly-updated',
+        name: 'Juegos TOP',
+    },
+];
+
+interface IGames {
+    data: any[];
+    type: string;
+}
+
 const Games = () => {
-    // const [typeOfGames, setTypeOfGames] = useState<'most-played' | 'new' | 'significantly-updated'>(
-    //     'most-played'
-    // );
-    const [games, setGames] = useState<any[]>([]);
+    const [games, setGames] = useState<IGames[]>([]);
+
+    const navigate = useNavigate();
 
     const fetchGames = async () => {
         let allGames: any[] = [];
         try {
             const allUrls = [0, 1, 2].map((el) => {
-                const typesOfGames = ['most-played', 'new', 'significantly-updated'];
-                const url = getUrlForGames(typesOfGames[el]);
+                const url = getUrlForGames(typesOfGames[el].type);
                 return fetch(url).then((response) => response.json());
             });
+
             Promise.allSettled(allUrls)
                 .then((results) => {
                     results.forEach((result: any, index) => {
@@ -28,7 +47,7 @@ const Games = () => {
                                 ...allGames,
                                 {
                                     data: result.value.games.data.items,
-                                    type: index,
+                                    type: typesOfGames[index].name,
                                 },
                             ];
                         } else {
@@ -47,24 +66,26 @@ const Games = () => {
             console.log(error);
         }
     };
-    const navigate = useNavigate();
 
     useEffect(() => {
         fetchGames();
     }, []);
 
     return (
-        <BodyLayout>
-            <div className="flex gap-6 flex-wrap justify-center p-5">
-                {games.map((game: any) =>
-                    game.data.map((element: any) => (
-                        <div key={element.id} onClick={() => navigate(`/game/${element.slug}`)}>
-                            <CardDetail data={element} />
+        <div className="w-full h-full flex flex-col justify-between ">
+            {games.map((game) => (
+                <BodyLayout key={game.type} title={game.type}>
+                    {game.data.map((element: any) => (
+                        <div
+                            className=""
+                            key={element.id}
+                            onClick={() => navigate(`/game/${element.slug}`)}>
+                            <CardDetail data={element} size="small" />
                         </div>
-                    ))
-                )}
-            </div>
-        </BodyLayout>
+                    ))}
+                </BodyLayout>
+            ))}
+        </div>
     );
 };
 

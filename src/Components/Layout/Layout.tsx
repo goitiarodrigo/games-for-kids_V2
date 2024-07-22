@@ -1,19 +1,18 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
-import Footer from '@/Components/Footer/Footer';
 import Header from '@/Components/Header/Header';
-import SearchComponent from '../SearchComponent/SearchComponent';
+import NavBar from '../NavBar/NavBar';
 
 interface IProps {
-    children: React.ReactNode;
+    children: ReactNode;
 }
 
 const Layout = ({ children }: IProps) => {
     return (
         <div className="w-[100vw] h-[100vh]">
-            <Header />
-            {/* <SearchComponent /> */}
-            <div className="bg-[url('./assets/background.jpg')] w-full h-[93vh] bg-center bg-no-repeat bg-cover flex items-center justify-center pb-[10rem]">
+            <Header height="7vh" />
+            <NavBar />
+            <div className="bg-[url('./assets/background.jpg')] w-[100% - 60px] h-[93vh] bg-center bg-no-repeat bg-cover flex items-center justify-center ml-[60px]">
                 {children}
             </div>
             {/* <Footer /> */}

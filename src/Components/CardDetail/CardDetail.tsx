@@ -6,9 +6,31 @@ import { URL_IMAGES_CG, URL_VIDEOS_CG } from '../../../constants';
 
 interface IProps {
     data: any;
+    size: 'small' | 'medium' | 'large';
 }
 
-const CardDetail = ({ data }: IProps) => {
+const sizes = {
+    small: {
+        maxWidth: 200,
+        minWidth: 200,
+        maxHeight: 200,
+        minHeight: 200,
+    },
+    medium: {
+        maxWidth: 300,
+        minWidth: 300,
+        maxHeight: 300,
+        minHeight: 300,
+    },
+    large: {
+        maxWidth: 400,
+        minWidth: 400,
+        maxHeight: 400,
+        minHeight: 400,
+    },
+};
+
+const CardDetail = ({ data, size }: IProps) => {
     const [isMouseEnter, setIsMouseEnter] = useState(false);
 
     const { name, cover, videos, mobileFriendly } = data;
@@ -29,10 +51,7 @@ const CardDetail = ({ data }: IProps) => {
             onMouseEnter={() => handleMouseEnter(videos.sizes[2])}
             onMouseLeave={handlMouseLeave}
             sx={{
-                maxWidth: 250,
-                minWidth: 250,
-                maxHeight: 270,
-                minHeight: 270,
+                ...sizes[size],
                 position: 'relative',
                 backgroundColor: 'transparent',
                 boxShadow: 'none',

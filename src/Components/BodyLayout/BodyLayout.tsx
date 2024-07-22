@@ -1,12 +1,16 @@
 import { Container } from '@mui/material';
 import { JSX } from '@emotion/react/jsx-runtime';
 
-const BodyLayout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
+interface IProps {
+    children: JSX.Element | JSX.Element[];
+    title: string;
+}
+
+const BodyLayout = ({ children, title }: IProps) => {
     return (
-        <Container
-            className="bg-body-bg bg h-[70vh] overflow-y-scroll flex justify-center items-center"
-            fixed>
-            {children}
+        <Container maxWidth={false}>
+            <span>{title}</span>
+            <div className="overflow-x-scroll overflow-y-hidden flex">{children}</div>
         </Container>
     );
 };
