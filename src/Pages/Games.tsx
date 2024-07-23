@@ -1,15 +1,15 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Slider from 'react-slick';
 
 import BodyLayout from '@/Components/BodyLayout/BodyLayout';
 import CardDetail from '@/Components/CardDetail/CardDetail';
-import { getUrlForGames, URL_API_CG } from '@/../constants';
+import { getUrlForGames } from '@/../constants';
 
 const typesOfGames = [
     {
         type: 'new',
-        name: 'Nuevos juegos',
+        name: 'Juegos nuevos',
     },
     {
         type: 'most-played',
@@ -20,6 +20,41 @@ const typesOfGames = [
         name: 'Juegos TOP',
     },
 ];
+
+const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 7,
+    slidesToScroll: 7,
+    initialSlide: 7,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true,
+            },
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                initialSlide: 2,
+            },
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+            },
+        },
+    ],
+};
 
 interface IGames {
     data: any[];
@@ -72,18 +107,21 @@ const Games = () => {
     }, []);
 
     return (
-        <div className="w-full h-full flex flex-col justify-between ">
+        <div className="w-full h-full flex flex-col gap-5 items-center py-5">
             {games.map((game) => (
-                <BodyLayout key={game.type} title={game.type}>
-                    {game.data.map((element: any) => (
-                        <div
-                            className=""
-                            key={element.id}
-                            onClick={() => navigate(`/game/${element.slug}`)}>
-                            <CardDetail data={element} size="small" />
-                        </div>
-                    ))}
-                </BodyLayout>
+                <div className="slider-container w-11/12 py-3 flex flex-col gap-3 " key={game.type}>
+                    <span className="text-white">{game.type}</span>
+                    <Slider {...settings}>
+                        {game.data.map((element: any) => (
+                            <div
+                                className="w-auto"
+                                key={element.id}
+                                onClick={() => navigate(`/game/${element.slug}`)}>
+                                <CardDetail data={element} size="small" />
+                            </div>
+                        ))}
+                    </Slider>
+                </div>
             ))}
         </div>
     );

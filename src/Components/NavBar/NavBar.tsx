@@ -1,4 +1,3 @@
-import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { useState } from 'react';
@@ -15,7 +14,6 @@ const NavBar = () => {
 
     return (
         <div className="w-full bg-[#0C0D14]">
-            <CssBaseline />
             <SwipeableDrawer
                 ModalProps={{
                     keepMounted: true,
@@ -25,12 +23,9 @@ const NavBar = () => {
                 onClose={toggleDrawer(false)}
                 onOpen={toggleDrawer(true)}
                 open={open}
-                swipeAreaWidth={200}
                 sx={{
                     '& .MuiPaper-root': {
-                        marginTop: '5.8vh',
-                        // paddingTop: '5px',
-                        height: '93vh',
+                        marginTop: '7vh',
                     },
                 }}>
                 <Box
@@ -44,6 +39,7 @@ const NavBar = () => {
                         flexDirection: 'column',
                         gap: 1,
                         backgroundColor: '#0C0D14',
+                        paddingTop: '10px',
                     }}>
                     {typesGamesES.map((el) => (
                         <span className="flex text-white" key={el.name}>
@@ -59,7 +55,6 @@ const NavBar = () => {
                 onMouseEnter={toggleDrawer(true)}
                 sx={{
                     position: 'absolute',
-                    // marginTop: '5.8vh',
                     zIndex: open ? 0 : 9999,
                     display: 'flex',
                     flexDirection: 'column',
@@ -67,10 +62,10 @@ const NavBar = () => {
                     paddingLeft: 1,
                     width: 60,
                     overflowY: 'scroll',
-                    height: '93vh',
                     transform: open ? 'translateX(-100%)' : 'translateX(0)',
                     transition: 'transform 0.2s ease-in-out',
                     backgroundColor: '#0C0D14',
+                    paddingTop: '10px',
                 }}>
                 {typesGamesES.map((el) => {
                     return (

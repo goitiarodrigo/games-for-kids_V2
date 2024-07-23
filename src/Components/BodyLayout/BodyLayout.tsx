@@ -9,8 +9,8 @@ interface IProps {
 const BodyLayout = ({ children, title }: IProps) => {
     return (
         <Container maxWidth={false}>
-            <span>{title}</span>
-            <div className="overflow-x-scroll overflow-y-hidden flex">{children}</div>
+            <span className="text-white">{title}</span>
+            <div className="overflow-x-scroll overflow-y-hidden flex gap-3 py-2">{children}</div>
         </Container>
     );
 };
