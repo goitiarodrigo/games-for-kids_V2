@@ -46,7 +46,7 @@ const FriendsOnline = () => {
     };
 
     return (
-        <div className="flex w-full px-2 h-[8rem] items-center">
+        <div className="flex w-full px-2 h-[8rem] items-center max-w-full overflow-x-auto">
             {friends.map((friend, index) => (
                 <div className="flex flex-col items-center w-[10rem] max-w-[10rem]" key={index}>
                     <div className="relative">

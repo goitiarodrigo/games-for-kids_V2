@@ -1,5 +1,12 @@
 import { createContext } from 'react';
 
+export interface IFetchGame {
+    genre: boolean;
+    name: string;
+    path: string;
+    svg: string;
+}
+
 interface IContext {
     setOpenModalLog: (value: boolean) => void;
     openModalLog: boolean;
@@ -9,6 +16,11 @@ interface IContext {
     isInitializedGame: boolean;
     setSelectedGame: (value: string) => void;
     selectedGame: string;
+    fetchGames: (value: IFetchGame) => void;
+    fetchGamesByTypes: () => void;
+    games: any[] | undefined;
+    gamesByTypes: any[];
+    loading: boolean;
 }
 
 export const Context = createContext<IContext>({} as IContext);

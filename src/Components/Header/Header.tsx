@@ -76,6 +76,7 @@ const Header = ({ height }: IProps) => {
         <Box
             sx={{
                 height,
+                zIndex: 999999999,
             }}>
             <AppBar component="nav">
                 <Toolbar className={`bg-[#1f2030] `}>

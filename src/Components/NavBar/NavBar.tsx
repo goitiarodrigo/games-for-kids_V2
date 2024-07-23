@@ -1,12 +1,15 @@
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { typesGamesES } from '@/routes/constants.routes';
 import { URL_IMAGES_CG } from '../../../constants';
+import { Context } from '@/context/Context';
 
 const NavBar = () => {
     const [open, setOpen] = useState(false);
+
+    const { fetchGames } = useContext(Context);
 
     const toggleDrawer = (newOpen: boolean) => () => {
         setOpen(newOpen);
@@ -40,9 +43,13 @@ const NavBar = () => {
                         gap: 1,
                         backgroundColor: '#0C0D14',
                         paddingTop: '10px',
+                        maxHeight: '93vh',
                     }}>
                     {typesGamesES.map((el) => (
-                        <span className="flex text-white" key={el.name}>
+                        <span
+                            className="flex text-white"
+                            key={el.name}
+                            onClick={() => fetchGames(el)}>
                             <img alt={el.name} src={`${URL_IMAGES_CG}icon/${el.svg}`} />
                             <span className="pl-5 cursor-pointer transition-transform duration-300 ease-in-out transform hover:translate-x-2 hover:text-gray-400">
                                 {el.name}
