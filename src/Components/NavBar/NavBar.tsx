@@ -28,7 +28,7 @@ const NavBar = () => {
                 open={open}
                 sx={{
                     '& .MuiPaper-root': {
-                        marginTop: '7vh',
+                        marginTop: '8vh',
                     },
                 }}>
                 <Box
@@ -61,7 +61,7 @@ const NavBar = () => {
             <Box
                 onMouseEnter={toggleDrawer(true)}
                 sx={{
-                    position: 'absolute',
+                    position: 'fixed',
                     zIndex: open ? 0 : 9999,
                     display: 'flex',
                     flexDirection: 'column',
@@ -72,6 +72,7 @@ const NavBar = () => {
                     transform: open ? 'translateX(-100%)' : 'translateX(0)',
                     transition: 'transform 0.2s ease-in-out',
                     backgroundColor: '#0C0D14',
+                    // marginTop: '8vh',
                     paddingTop: '10px',
                 }}>
                 {typesGamesES.map((el) => {

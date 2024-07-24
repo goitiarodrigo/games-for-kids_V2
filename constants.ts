@@ -9,3 +9,7 @@ export const getUrlForGames = (type: string) => {
 export const getUrlFormEachGame = (game: string) => {
     return `${URL_API_CG}/en_US/page/tagCategory/${game}?paginationPage=1&paginationSize=70&includeUnreal=true&sorting=default&limitTopGames=15&limitSubRowTags=15&limitDesktopOnly=8&device=desktop&includeDesktopOnly=false&limitTopMobileGames=10&limitRelatedTags=20&desktopPageSize=70`
 }
+
+export const getUrlForAnyGame = (game: string) => {
+    return `${URL_API_CG}/es_ES/page/game/${game}?limit=15&device=desktop&includeRelatedGames=true&includeDesktopOnly=false`
+}

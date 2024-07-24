@@ -21,6 +21,7 @@ interface IContext {
     games: any[] | undefined;
     gamesByTypes: any[];
     loading: boolean;
+    fetchAnyGame: (game: string) => Promise<any>;
 }
 
 export const Context = createContext<IContext>({} as IContext);

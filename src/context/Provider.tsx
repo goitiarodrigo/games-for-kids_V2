@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Context, IFetchGame } from './Context';
 import Games from '../services/game.service';
-import { getUrlForGames, getUrlFormEachGame } from '../../constants';
+import { getUrlForAnyGame, getUrlForGames, getUrlFormEachGame } from '../../constants';
 
 interface IProps {
     children: React.JSX.Element | React.JSX.Element[];
@@ -97,6 +97,16 @@ export const Provider = ({ children }: IProps) => {
         }
     };
 
+    const fetchAnyGame = async (game: string) => {
+        try {
+            const url = getUrlForAnyGame(game);
+            const response = await Games.gameAnyGame(url);
+            return response;
+        } catch (error: any) {
+            console.log(error.message);
+        }
+    };
+
     return (
         <Context.Provider
             value={{
@@ -113,6 +123,7 @@ export const Provider = ({ children }: IProps) => {
                 fetchGamesByTypes,
                 gamesByTypes,
                 loading,
+                fetchAnyGame,
             }}>
             {children}
         </Context.Provider>

@@ -78,8 +78,8 @@ const Header = ({ height }: IProps) => {
                 height,
                 zIndex: 999999999,
             }}>
-            <AppBar component="nav">
-                <Toolbar className={`bg-[#1f2030] `}>
+            <AppBar className="h-[8vh]" component="nav">
+                <Toolbar className="bg-[#1f2030] h-full">
                     <IconButton
                         aria-label="open drawer"
                         color="inherit"
@@ -114,7 +114,7 @@ const Header = ({ height }: IProps) => {
                     </Box>
                 </Toolbar>
             </AppBar>
-            <nav>
+            <nav className="h-full">
                 <Drawer
                     ModalProps={{
                         keepMounted: true,

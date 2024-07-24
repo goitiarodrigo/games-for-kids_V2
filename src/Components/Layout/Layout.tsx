@@ -10,12 +10,12 @@ interface IProps {
 
 const Layout = ({ children }: IProps) => {
     return (
-        <div className="w-[100vw] h-[100vh]">
-            <Header height="7vh" />
+        <div className="w-[100vw] h-[100vh] overflow-x-hidden overflow-y-scroll">
+            <Header height="8vh" />
             <NavBar />
-            <div className="bg-[#0C0D14] w-[100% - 60px] bg-center bg-no-repeat bg-cover flex flex-col items-center justify-center ml-[60px]">
+            <div className="bg-[#0C0D14] w-[100% - 60px] min-h-[92vh] bg-center bg-no-repeat bg-cover flex flex-col items-center ml-[60px]">
                 <FriendsList />
-                {children}
+                <div className="flex items-center justify-center h-[90%] w-full">{children}</div>
             </div>
             {/* <Footer /> */}
         </div>
