@@ -36,24 +36,21 @@ const Game = () => {
         });
     }, [isInitializedGame]);
 
-    console.log(gameInfo?.related);
-
     return (
-        <div className="w-full flex-col items-center">
-            <h1>Juego de CrazyGames</h1>
+        <div className="w-full flex flex-col items-center">
             {isInitializedGame ? (
                 <iframe
                     allowFullScreen
                     height="500px"
                     src={`https://games.crazygames.com/es_ES/${gameId}/index.html?v=1.293`}
-                    width="1500px"
+                    width="90%"
                 />
             ) : null}
             {gameInfo ? (
-                <>
+                <div className="w-[90%] flex flex-col items-center">
                     <GameTabs data={gameInfo.game} />
                     <RelatedGames data={gameInfo.related.data} />
-                </>
+                </div>
             ) : null}
         </div>
     );

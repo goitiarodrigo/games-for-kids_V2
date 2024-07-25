@@ -54,7 +54,7 @@ const GameTabs = ({ data }: IProps) => {
     };
 
     return (
-        <Box sx={{ width: '1500px', typography: 'body1', color: 'white' }}>
+        <Box sx={{ width: '90%', typography: 'body1', color: 'white' }}>
             <TabContext value={value}>
                 <Box
                     sx={{
